@@ -1,0 +1,25 @@
+.table{
+    table-layout: fixed;
+}
+th > input {
+    border: none;
+    background-color: transparent;
+    border-bottom: 2px white solid;
+    color: white;
+}
+th > input:focus{
+    outline: none;
+    border-bottom: 2px rgb(46, 240, 240) solid;    
+}
+td > input {
+    border: none;
+    background-color: transparent;
+}
+td > input:focus {
+    border: none;
+    outline: none;
+}
+tbody tr th,  tbody tr td{
+    text-align: center;
+    border: 1px gray solid;
+} 
