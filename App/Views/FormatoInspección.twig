@@ -19,7 +19,7 @@
             <tr>
                 <th colspan="3">
                     Empresa <select name="Empresa" id="inputempresa"  required> 
-                    <option selected > ... </option>
+                    <option selected value=""> ... </option>
                     {% for empresa in empresas %}
                      <option value="{{empresa.id}}"> {{empresa.Nombre}} </option>
                      {% endfor %}
@@ -91,36 +91,36 @@
                     </select>
             </td>
             <td colspan="1">
-                <input type="text" name="FuentRiesgo">
+                <input type="text" name="FuentRiesgo" required>
             </td>
             <td colspan="1">
-                <input type="text" name="SeccionAfect">
+                <input type="text" name="SeccionAfect" required>
             </td>
             <td colspan="1">
-                <input type="text" name="PuestAfect">
+                <input type="text" name="PuestAfect" required>
             </td>
             <td colspan="1">
-                <input type="number" name="NumExp">
+                <input type="number" name="NumExp" required>
             </td>
             <td colspan="1">
-                <label for="Probabilidad">P: <input type="number" id="Probabilidad" name="Probabilidad"></label> <br>
-                <label for="Exposición">E: <input type="number" id="Exposición" name="Exposicion"></label> <br>
-                <label for="Consecuencia">C: <input type="number" id="Consecuencia" name="Consecuencia"></label> <br>
+                <label for="Probabilidad">P: <input type="number" id="Probabilidad" name="Probabilidad" required></label> <br>
+                <label for="Exposición">E: <input type="number" id="Exposición" name="Exposicion" required></label> <br>
+                <label for="Consecuencia">C: <input type="number" id="Consecuencia" name="Consecuencia" required></label> <br>
             </td>
             <td colspan="1">
                 <input type="text" name="Resultado"  id="Resultado" value="0" readonly>
             </td>
             <td colspan="1">
-                <label>Descripcion:<input type="text" name="DescripcionMetodo"></label>
-                <label>Fuente: <input type="radio" name="tipoMetodo" value="Fuente"></label>
+                <label>Descripcion:<input type="text" name="DescripcionMetodo" required></label>
+                <label>Fuente: <input type="radio" name="tipoMetodo" value="Fuente" required></label>
                 <label>Medio: <input type="radio" name="tipoMetodo" value="Medio"></label>
                 <label>Hombre: <input type="radio" name="tipoMetodo" value="Hombre"></label>
             </td>
             <td>
                 <label>Descripcion:<input type="text" name="DescripcionMetodoRec"></label>
-                <label>Fuente: <input type="radio" name="tipoMetodoRec" value="Fuente"></label>
-                <label>Medio: <input type="radio" name="tipoMetodoRec" value="Medio"></label>
-                <label>Hombre: <input type="radio" name="tipoMetodoRec" value="Hombre"></label>
+                <label>Fuente: <input type="radio" name="tipoMetodoRec" value="Fuente" required></label>
+                <label>Medio: <input type="radio" name="tipoMetodoRec" value="Medio" required></label>
+                <label>Hombre: <input type="radio" name="tipoMetodoRec" value="Hombre" required></label>
             </td>
          </tr>
         </tbody>

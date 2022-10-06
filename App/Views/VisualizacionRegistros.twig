@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<!-- Creando tablas de registros (una para cada empresa)-->
 {% for empresa in empresas %}
     <table class="table">
         <thead class="table-dark">
@@ -49,6 +50,7 @@
             </tr>
         </thead>
         <tbody>
+        <!-- Insertando registros de acuerdo a empresa-->
         {% for registro in registros %}
         {% if (registro.Empresa == empresa.id) %}
             <tr>
@@ -60,9 +62,6 @@
                 </td>
                 <td>
                 {{registro.Descripcion}}
-                </td>
-                <td>
-                {{registro.GrupoFact}}
                 </td>
                 <td>
                 {{registro.NombreSec}}
@@ -79,14 +78,17 @@
                 C: {{registro.C}}
                 </td>
                 <td>
-                Descripcion: <br>
-                {{registro.MiDescripcion}}<br>
-                tipo: {{registro.MiDescripcion}}
+                {{registro.Resultado}}
                 </td>
                 <td>
-                Descripcion: <br>
-                {{registro.MrDescripcion}}<br>
-                tipo: {{registro.MrDescripcion}}
+                Descripcion: <br><br>
+                {{registro.MiDescripcion}}<br><br>
+                Tipo: {{registro.MiTipo}}
+                </td>
+                <td>
+                Descripcion: <br><br>
+                {{registro.MrDescripcion}}<br><br>
+                Tipo: {{registro.MrTipo}}
                 </td>
             </tr>
         {% endif %}
