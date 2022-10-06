@@ -41,7 +41,15 @@ CREATE TABLE `CodFact` (
 --
 
 INSERT INTO `CodFact` (`id_CF`, `id_GF`, `Nombre`) VALUES
-('2A', 2, 'Ruido');
+('1A', 1, 'Temperaturas extremas'),
+('1B', 1, 'Niveles de luz natural inadecuados'),
+('1C', 1, 'Aireación natural deficiente'),
+('1D', 1, 'Humedad relativa y lluvias'),
+('1E', 1, 'Electricidad atmosférica'),
+('1F', 1, 'Presiones barométricas anormales'),
+('2A', 2, 'Tipo físico(no mecánico)'),
+('2B', 2, 'Tipo químico'),
+('2C', 2, 'Tipo biológico');
 
 -- --------------------------------------------------------
 
@@ -62,7 +70,7 @@ CREATE TABLE `Empresa` (
 
 INSERT INTO `Empresa` (`id`, `Nombre`, `Direcccion`, `Telefono`) VALUES
 (1, 'ITD Juan Del Corral IED', 'No se xd', 310771823),
-(2, 'Magdalena Ortega', 'cra no se', 501915), (3, 'Cocacola espuma xd', 'Espuma', 3100150);
+(2, 'Magdalena Ortega', 'cra no se', 501915), (3, 'Platzi', 'Todo el mundo, es web', 3100150);
 
 -- --------------------------------------------------------
 
@@ -92,8 +100,13 @@ CREATE TABLE `GrupoFact` (
 -- Volcado de datos para la tabla `GrupoFact`
 --
 
-INSERT INTO `GrupoFact` (`id_GF`, `Nombre`) VALUES
-(2, 'Contaminante Físico');
+INSERT INTO `GrupoFact` (`id_GF`, `Nombre`) VALUES 
+(1, 'Ambiente de trabajo microclima'),
+(2, 'Contaminante Físico'),
+(3, 'Insalubridad locativa y ambiental deficiente'),
+(4, 'Sobrecarga física'),
+(5, 'Psicosociales productores de sobrecarga psíquica'),
+(6, 'Productores de inseguridad');
 
 -- --------------------------------------------------------
 
