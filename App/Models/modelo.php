@@ -17,9 +17,8 @@ class modelo extends \Core\Model{
         try {
             $consulta = $db->prepare("SELECT * FROM Empresa");
             $consulta->execute();
-            $data = $consulta->fetchAll(PDO::FETCH_ASSOC);
-            return $data; 
-        } catch (\Throwable $th) {
+            return $consulta->fetchAll(PDO::FETCH_ASSOC);
+        } catch (\PDOException $th) {
             echo $th->getMessage();
         }
     }
@@ -29,21 +28,30 @@ class modelo extends \Core\Model{
         try {
             $consulta = $db->prepare("SELECT * FROM GrupoFact");
             $consulta->execute();
-            $data = $consulta->fetchAll(PDO::FETCH_ASSOC);
-            return $data; 
-        } catch (\Throwable $th) {
+            return $consulta->fetchAll(PDO::FETCH_ASSOC);
+        } catch (\PDOException $th) {
             echo $th->getMessage();
         }
     }
     public static function getDataCodFact(){
         $db = static::getDB();
-        //Consiguiendo datos necesarios para el select de empresas
         try {
             $consulta = $db->prepare("SELECT * FROM CodFact");
             $consulta->execute();
-            $data = $consulta->fetchAll(PDO::FETCH_ASSOC);
-            return $data; 
-        } catch (\Throwable $th) {
+            return $consulta->fetchAll(PDO::FETCH_ASSOC);
+        } catch (\PDOException $th) {
+            echo $th->getMessage();
+        }
+    }
+    public static function getRegistros(){
+        $db = static::getDB();
+        try {
+            //Consiguiendo todos los registros de la base de datos
+            $consulta = $db->prepare("SELECT GF.Nombre GrupoFact, cod.Nombre CodFact, Fu.Descripcion, sec.NombreSec, PuestAf.Nombre, PuestAf.NumExp, PuestAf.P, PuestAf.E, PuestAf.C, PuestAf.Resultado, MI.Descripcion MiDescripcion, MI.Tipo MiTipo ,MR.Descripcion MrDescripcion, MR.Tipo MrTipo, Info.Empresa FROM Fuente Fu LEFT JOIN CodFact Cod ON cod.id_CF = Fu.id_CF LEFT JOIN GrupoFact GF ON GF.id_GF = Cod.id_GF INNER JOIN Informacion Info ON FU.id_Info = info.id LEFT JOIN Seccion sec ON Sec.id_Fuen = Fu.id_Fuen LEFT JOIN PuestosAfect PuestAf ON PuestAf.id_Puest = sec.id_Sec LEFT JOIN MetodoRecomendado MR ON MR.id_Puest = PuestAf.id_Puest LEFT JOIN MetodoInstalado MI ON MI.id_Puest = PuestAf.id_Puest;");
+            $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch (\PDOException $th) {
             echo $th->getMessage();
         }
     }

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Correctamente insertado</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+{% for empresa in empresas %}
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th colspan="10"><center>Registros {{empresa.Nombre}}</center></th>
+            </tr>
+            <tr>
+            <th>
+                Grupo factor de riesgo
+            </th>
+            <th>
+                Código FR
+            </th>
+            <th>
+                Fuente FR
+            </th>
+            <th>
+                Sección afectada
+            </th>
+            <th>
+                Puesto afectado
+            </th>
+            <th>
+                No de expuestos
+            </th>
+            <th>
+                Grado de peligro <br>
+            </th>
+            <th>
+               Resultado
+            </th>
+            <th>
+                Método de control instalado
+            </th>
+            <th>
+                Método de control Recomendado
+            </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for registro in registros %}
+        {% if (registro.Empresa == empresa.id) %}
+            <tr>
+                <td>
+                {{registro.GrupoFact}}
+                </td>
+                <td>
+                {{registro.CodFact}}
+                </td>
+                <td>
+                {{registro.Descripcion}}
+                </td>
+                <td>
+                {{registro.GrupoFact}}
+                </td>
+                <td>
+                {{registro.NombreSec}}
+                </td>
+                <td>
+                {{registro.Nombre}}
+                </td>
+                <td>
+                {{registro.NumExp}}
+                </td>
+                <td>
+                P: {{registro.P}}<br>
+                E: {{registro.E}}<br>
+                C: {{registro.C}}
+                </td>
+                <td>
+                Descripcion: <br>
+                {{registro.MiDescripcion}}<br>
+                tipo: {{registro.MiDescripcion}}
+                </td>
+                <td>
+                Descripcion: <br>
+                {{registro.MrDescripcion}}<br>
+                tipo: {{registro.MrDescripcion}}
+                </td>
+            </tr>
+        {% endif %}
+        {% endfor %}
+        </tbody>
+
+    </table>
+{% endfor %}
+    <a href="?" class="btn btn-primary"> Hacer un nuevo registro </a>
+</body>
+</html>

@@ -24,10 +24,14 @@ class Home extends \Core\Controller{
         if($InfoID){
             //Insertando el resto de datos
             modelo::InsertDatos($_POST, $InfoID);
-            View::renderTemplate('VisualizacionRegistros.html');
+            $this->Datos();
         }
     }
     public function Datos(){
-        View::renderTemplate('VisualizacionRegistros.html');
+        //Consiguiendo y retornando información de los registros existentes
+        View::renderTemplate('VisualizacionRegistros.twig', [
+            'empresas' => modelo::getDataEmpresas(),
+            'registros' => modelo::getRegistros()
+        ]);
     }
 }
