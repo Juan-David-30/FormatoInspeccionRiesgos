@@ -18,7 +18,12 @@
             
             <tr>
                 <th colspan="3">
-                    Empresa <input type="text" name="Empresa" id="inputempresa"  required>
+                    Empresa <select name="Empresa" id="inputempresa"  required> 
+                    <option selected > ... </option>
+                    {% for empresa in empresas %}
+                     <option value="{{empresa.id}}"> {{empresa.Nombre}} </option>
+                     {% endfor %}
+                    </select>
                 </th>
 
                 <th colspan="2">
@@ -70,30 +75,40 @@
          </tr>
          <tr>
             <td colspan="1">
-                <input type="text" name="FactRiesgo">
+                    <select name="FuentRiesgo" id="inputempresa"  required> 
+                    <option selected > ... </option>
+                    {% for grupo in grupoFact %}
+                     <option value={{grupo.id_GF}}> {{grupo.Nombre}} </option>
+                     {% endfor %}
+                    </select>
             </td>
             <td colspan="1">
-                <input type="text" name="CodRiesgo">
+                    <select name="CodRiesgo" id="inputempresa"  required> 
+                    <option selected > ... </option>
+                    {% for grupo in codigoFact %}
+                     <option value="{{grupo.id_CF}}"> {{grupo.Nombre}} </option>
+                     {% endfor %}
+                    </select>
             </td>
             <td colspan="1">
                 <input type="text" name="FuentRiesgo">
             </td>
             <td colspan="1">
+                <input type="text" name="SeccionAfect">
+            </td>
+            <td colspan="1">
                 <input type="text" name="PuestAfect">
             </td>
             <td colspan="1">
-                <input type="text" name="NumExp">
+                <input type="number" name="NumExp">
             </td>
             <td colspan="1">
-                <input type="text" name="GradPeligro">
+                <label for="Probabilidad">P: <input type="number" id="Probabilidad" name="Probabilidad"></label> <br>
+                <label for="Exposición">E: <input type="number" id="Exposición" name="Exposicion"></label> <br>
+                <label for="Consecuencia">C: <input type="number" id="Consecuencia" name="Consecuencia"></label> <br>
             </td>
             <td colspan="1">
-                <label for="Probabilidad">P: <input type="text" id="Probabilidad" name="Probabilidad"></label> <br>
-                <label for="Exposición">E: <input type="text" id="Exposición" name="Exposicion"></label> <br>
-                <label for="Consecuencia">C: <input type="text" id="Consecuencia" name="Consecuencia"></label> <br>
-            </td>
-            <td colspan="1">
-                <input type="text" name="Resultado"  id="Resultado" value="100" readonly>
+                <input type="text" name="Resultado"  id="Resultado" value="0" readonly>
             </td>
             <td colspan="1">
                 <label>Descripcion:<input type="text" name="DescripcionMetodo"></label>
@@ -102,7 +117,10 @@
                 <label>Hombre: <input type="radio" name="tipoMetodo" value="Hombre"></label>
             </td>
             <td>
-                <input type="text" id="MethRecomendado" name="MethRecomendado">
+                <label>Descripcion:<input type="text" name="DescripcionMetodoRec"></label>
+                <label>Fuente: <input type="radio" name="tipoMetodoRec" value="Fuente"></label>
+                <label>Medio: <input type="radio" name="tipoMetodoRec" value="Medio"></label>
+                <label>Hombre: <input type="radio" name="tipoMetodoRec" value="Hombre"></label>
             </td>
          </tr>
         </tbody>
@@ -110,12 +128,23 @@
       <button type="submit"> Enviar</button>
       </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-    <script> /*
-    const resultado = document.getElementById("Resultado");
-    const  p= document.getElementById("Resultado");
-    resultado.addEventListener('')
-    function ActualizarValorResult(){            
-    }*/
+    <script> 
+        const resultado = document.getElementById("Resultado");
+        const P = document.getElementById("Probabilidad");
+        const E = document.getElementById("Exposición");
+        const C = document.getElementById("Consecuencia");
+
+        P.addEventListener('change', ActualizarValorResult);
+        E.addEventListener('change', ActualizarValorResult);
+        C.addEventListener('change', ActualizarValorResult);
+
+        function ActualizarValorResult(){
+            let Pr = P.value ? P.value : 0;
+            let Ex = E.value ? E.value : 0;
+            let Co = C.value ? C.value : 0;
+            resultado.value = Pr*Ex*Co;
+        }      
+        
     </script>
   </body>
 </html>

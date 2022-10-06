@@ -5,16 +5,29 @@ use \App\Models\modelo;
 
 class Home extends \Core\Controller{
     public function index() {
-        View::renderTemplate('FormatoInspección.html'); 
+        //Retornando index con información necesaria para los select de la base de datos
+        $empresas = modelo::getDataEmpresas();
+        $grupoFact = modelo::getDataGrupFact();
+        $codigoFact = modelo::getDataCodFact();
+        View::renderTemplate('FormatoInspección.twig', 
+            [
+                'empresas' => $empresas, 
+                'grupoFact' => $grupoFact,
+                'codigoFact' => $codigoFact
+            ]
+        ); 
     }
     public function insert(){
-        //var_dump(modelo::InsertInfo($_POST));
+        //Insertando cabecera
         $InfoID = modelo::InsertInfo($_POST);
+        //Validando cabecera existe
         if($InfoID){
-            session_start();
-            $_SESSION['InfoID'] = $InfoID;
-            View::renderTemplate('InsercionCorrecta.html');
-            modelo::InsertFuente($_POST);
+            //Insertando el resto de datos
+            modelo::InsertDatos($_POST, $InfoID);
+            View::renderTemplate('VisualizacionRegistros.html');
         }
+    }
+    public function Datos(){
+        View::renderTemplate('VisualizacionRegistros.html');
     }
 }
